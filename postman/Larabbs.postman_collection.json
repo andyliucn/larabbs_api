@@ -1,0 +1,43 @@
+{
+	"info": {
+		"_postman_id": "3b23bcbf-8e4f-4f29-9732-7718c26f9927",
+		"name": "Larabbs",
+		"description": "Larabbs 教程接口",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "用户",
+			"item": [
+				{
+					"name": "发送短信验证码",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/api/verificationCodes?phone=13750214130",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"verificationCodes"
+							],
+							"query": [
+								{
+									"key": "phone",
+									"value": "13750214130"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
