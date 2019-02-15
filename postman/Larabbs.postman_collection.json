@@ -36,6 +36,77 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "用户注册",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "verification_key",
+									"value": "verificationCode_EkGbTNw6HqcbE1h",
+									"type": "text"
+								},
+								{
+									"key": "verification_code",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "test-name",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/api/users",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "图片验证码",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "phone",
+									"value": "13750214130",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/api/captchas",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"captchas"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
