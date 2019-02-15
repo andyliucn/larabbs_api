@@ -18,11 +18,17 @@ $api = app('Dingo\Api\Routing\Router');
 $api->version('v1', [
     'namespace'=> 'App\Http\Controllers\Api'
 ], function ($api) {
-    // 短信验证码
-    $api->post('verificationCodes', 'VerificationCodesController@store')
-        ->name('api.verificationCodes.store');
+    $api->group([
+        'middleware'=> 'api.throttle',
+        'limit'=> config('api.rate_limits.sign.limit'),          /*限制次数*/
+        'expires'=> config('api.rate_limits.sign.expires'),      /*过期时间*/
+    ], function ($api){
+        // 短信验证码
+        $api->post('verificationCodes', 'VerificationCodesController@store')
+            ->name('api.verificationCodes.store');
 
-    // 用户注册
-    $api->post('users', 'UserController@store')
-        ->name('api.users.store');
+        // 用户注册
+        $api->post('users', 'UserController@store')
+            ->name('api.users.store');
+    });
 });
