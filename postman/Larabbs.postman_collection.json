@@ -109,6 +109,159 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "微信OAuth2.0",
+			"item": [
+				{
+					"name": "1.获取后台需要的 code 值",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx422db8a5ba8ebf24&redirect_uri=http://larabbs_api.test&response_type=code&scope=snsapi_userinfo&state=STATE",
+							"protocol": "https",
+							"host": [
+								"open",
+								"weixin",
+								"qq",
+								"com"
+							],
+							"path": [
+								"connect",
+								"oauth2",
+								"authorize"
+							],
+							"query": [
+								{
+									"key": "appid",
+									"value": "wx422db8a5ba8ebf24",
+									"description": "替换为自己的 appID"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "http://larabbs_api.test",
+									"description": "REDIRECT_URI 用户同意授权后的回调地址"
+								},
+								{
+									"key": "response_type",
+									"value": "code",
+									"description": "后台需要的响应字段, 可不改"
+								},
+								{
+									"key": "scope",
+									"value": "snsapi_userinfo",
+									"description": "SCOPE 应用授权作用域，填写 snsapi_userinfo 可修改"
+								},
+								{
+									"key": "state",
+									"value": "STATE",
+									"description": "STATE 随机参数，可以不填，我们保持 STATE 即可"
+								}
+							]
+						},
+						"description": "请在微信开发工具中使用此链接测试"
+					},
+					"response": []
+				},
+				{
+					"name": "2.获取access_token, open_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx422db8a5ba8ebf24&secret=d077ad4b4afadcbe65e791a8d242d3d3&code=061njTLn1As57r0QxJLn1f8ILn1njTL5&grant_type=authorization_code",
+							"protocol": "https",
+							"host": [
+								"api",
+								"weixin",
+								"qq",
+								"com"
+							],
+							"path": [
+								"sns",
+								"oauth2",
+								"access_token"
+							],
+							"query": [
+								{
+									"key": "appid",
+									"value": "wx422db8a5ba8ebf24",
+									"description": "替换为自己的 appID"
+								},
+								{
+									"key": "secret",
+									"value": "d077ad4b4afadcbe65e791a8d242d3d3",
+									"description": "替换为自己的 appsecret"
+								},
+								{
+									"key": "code",
+									"value": "061njTLn1As57r0QxJLn1f8ILn1njTL5",
+									"description": "步骤1中获取的 code 值"
+								},
+								{
+									"key": "grant_type",
+									"value": "authorization_code"
+								}
+							]
+						},
+						"description": "获取到了 access_token，注意微信同时返回了 open_id，微信access_token 和 open_id 一起请求用户信息。"
+					},
+					"response": []
+				},
+				{
+					"name": "3.通过 access_token获取个人信息",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api.weixin.qq.com/sns/userinfo?access_token=18_Ned3KmxStwbTvJ8yrWiR5IX0kNCPO1tDqYzxC3VMmeTXKTOv9OXQpmPVjQJr2aYDTBgRbl1dfdSUKYZO_puc0w&openid=oPFhN1BD3Vi3cufsdRTRrfl2-jxo&lang=zh_CN",
+							"protocol": "https",
+							"host": [
+								"api",
+								"weixin",
+								"qq",
+								"com"
+							],
+							"path": [
+								"sns",
+								"userinfo"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "18_Ned3KmxStwbTvJ8yrWiR5IX0kNCPO1tDqYzxC3VMmeTXKTOv9OXQpmPVjQJr2aYDTBgRbl1dfdSUKYZO_puc0w",
+									"description": "步骤2中 获取到的 access_token"
+								},
+								{
+									"key": "openid",
+									"value": "oPFhN1BD3Vi3cufsdRTRrfl2-jxo",
+									"description": "步骤2中 获取到的 openid"
+								},
+								{
+									"key": "lang",
+									"value": "zh_CN"
+								}
+							]
+						},
+						"description": "通过 access_token获取个人信息"
+					},
+					"response": []
+				}
+			],
+			"description": "微信开发者账号申请 \nhttps://learnku.com/courses/laravel-advance-training/5.7/wechat-developer-account-application/2683"
 		}
 	]
 }
