@@ -16,6 +16,7 @@
         "laravel/framework": "5.7.*",
         "laravel/horizon": "~1.0",
         "laravel/tinker": "~1.0",
+        "liyu/dingo-serializer-switch": "^0.3.1",
         "mews/captcha": "~2.0",
         "mews/purifier": "~2.0",
         "overtrue/easy-sms": "^1.1",
@@ -24,6 +25,7 @@
         "predis/predis": "~1.0",
         "spatie/laravel-permission": "~2.7",
         "summerblue/administrator": "~1.1",
+        "tymon/jwt-auth": "1.0.0-rc.3",
         "viacreative/sudo-su": "~1.1"
     },
     "require-dev": {
