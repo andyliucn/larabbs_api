@@ -1,0 +1,663 @@
+{
+	"info": {
+		"_postman_id": "3b23bcbf-8e4f-4f29-9732-7718c26f9927",
+		"name": "Larabbs",
+		"description": "Larabbs 教程接口",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "用户",
+			"item": [
+				{
+					"name": "发送短信验证码",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/api/verificationCodes?phone=13750214130",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"verificationCodes"
+							],
+							"query": [
+								{
+									"key": "phone",
+									"value": "13750214130"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "用户注册",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "verification_key",
+									"value": "verificationCode_EkGbTNw6HqcbE1h",
+									"type": "text"
+								},
+								{
+									"key": "verification_code",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "test-name",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/api/users",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "图片验证码",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "phone",
+									"value": "13750214130",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/api/captchas",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"captchas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "登录",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "guccilee@163.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/api/authorizations",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"authorizations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "刷新token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_user1}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sYXJhYmJzX2FwaS50ZXN0XC9hcGlcL2F1dGhvcml6YXRpb25zIiwiaWF0IjoxNTUxMDc0NjQ4LCJleHAiOjE1NTEwNzgyNDgsIm5iZiI6MTU1MTA3NDY0OCwianRpIjoiWUtJc0NtRUU5V05pb2g2ZyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.HugvblKJGbrgw9bwDH5oqMvtM5OMaTnsBMLO711uxCc",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/api/authorizations/current",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"authorizations",
+								"current"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_user1}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sYXJhYmJzX2FwaS50ZXN0XC9hcGlcL2F1dGhvcml6YXRpb25zIiwiaWF0IjoxNTUxMDc0NjQ4LCJleHAiOjE1NTEwNzgyNDgsIm5iZiI6MTU1MTA3NDY0OCwianRpIjoiWUtJc0NtRUU5V05pb2g2ZyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.HugvblKJGbrgw9bwDH5oqMvtM5OMaTnsBMLO711uxCc",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/api/authorizations/current",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"authorizations",
+								"current"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查看用户信息",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sYXJhYmJzX2FwaS50ZXN0XC9hcGlcL2F1dGhvcml6YXRpb25zIiwiaWF0IjoxNTUxMDc2MDQ4LCJleHAiOjE1NTEwNzk2NDgsIm5iZiI6MTU1MTA3NjA0OCwianRpIjoiTVc5eDlsUEo5VWNXbVRIZCIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.Zbnwtua8y4_oUCMhHHrw7Orl3ViQE0m9ddQrZdVStHk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/api/user",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改登录用户资料",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sYXJhYmJzX2FwaS50ZXN0XC9hcGlcL2F1dGhvcml6YXRpb25zIiwiaWF0IjoxNTUxMDgwNDIxLCJleHAiOjE1NTEwODQwMjEsIm5iZiI6MTU1MTA4MDQyMSwianRpIjoiS1ROWWs1S0FYRVdENU9pdCIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.576vqM1eZQubQBAMPkMk-AJyroI4sGz1MD1BpWYcVuI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "avatar_image_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "introduction",
+									"value": "123",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "guccilee@163.com",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "gucci",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/api/user",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "微信OAuth2.0",
+			"item": [
+				{
+					"name": "1.获取后台需要的 code 值",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx422db8a5ba8ebf24&redirect_uri=http://larabbs_api.test&response_type=code&scope=snsapi_userinfo&state=STATE",
+							"protocol": "https",
+							"host": [
+								"open",
+								"weixin",
+								"qq",
+								"com"
+							],
+							"path": [
+								"connect",
+								"oauth2",
+								"authorize"
+							],
+							"query": [
+								{
+									"key": "appid",
+									"value": "wx422db8a5ba8ebf24",
+									"description": "替换为自己的 appID"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "http://larabbs_api.test",
+									"description": "REDIRECT_URI 用户同意授权后的回调地址"
+								},
+								{
+									"key": "response_type",
+									"value": "code",
+									"description": "后台需要的响应字段, 可不改"
+								},
+								{
+									"key": "scope",
+									"value": "snsapi_userinfo",
+									"description": "SCOPE 应用授权作用域，填写 snsapi_userinfo 可修改"
+								},
+								{
+									"key": "state",
+									"value": "STATE",
+									"description": "STATE 随机参数，可以不填，我们保持 STATE 即可"
+								}
+							]
+						},
+						"description": "请在微信开发工具中使用此链接测试"
+					},
+					"response": []
+				},
+				{
+					"name": "2.获取access_token, open_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx422db8a5ba8ebf24&secret=d077ad4b4afadcbe65e791a8d242d3d3&code=061njTLn1As57r0QxJLn1f8ILn1njTL5&grant_type=authorization_code",
+							"protocol": "https",
+							"host": [
+								"api",
+								"weixin",
+								"qq",
+								"com"
+							],
+							"path": [
+								"sns",
+								"oauth2",
+								"access_token"
+							],
+							"query": [
+								{
+									"key": "appid",
+									"value": "wx422db8a5ba8ebf24",
+									"description": "替换为自己的 appID"
+								},
+								{
+									"key": "secret",
+									"value": "d077ad4b4afadcbe65e791a8d242d3d3",
+									"description": "替换为自己的 appsecret"
+								},
+								{
+									"key": "code",
+									"value": "061njTLn1As57r0QxJLn1f8ILn1njTL5",
+									"description": "步骤1中获取的 code 值"
+								},
+								{
+									"key": "grant_type",
+									"value": "authorization_code"
+								}
+							]
+						},
+						"description": "获取到了 access_token，注意微信同时返回了 open_id，微信access_token 和 open_id 一起请求用户信息。"
+					},
+					"response": []
+				},
+				{
+					"name": "3.通过 access_token获取个人信息",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api.weixin.qq.com/sns/userinfo?access_token=18_Ned3KmxStwbTvJ8yrWiR5IX0kNCPO1tDqYzxC3VMmeTXKTOv9OXQpmPVjQJr2aYDTBgRbl1dfdSUKYZO_puc0w&openid=oPFhN1BD3Vi3cufsdRTRrfl2-jxo&lang=zh_CN",
+							"protocol": "https",
+							"host": [
+								"api",
+								"weixin",
+								"qq",
+								"com"
+							],
+							"path": [
+								"sns",
+								"userinfo"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "18_Ned3KmxStwbTvJ8yrWiR5IX0kNCPO1tDqYzxC3VMmeTXKTOv9OXQpmPVjQJr2aYDTBgRbl1dfdSUKYZO_puc0w",
+									"description": "步骤2中 获取到的 access_token"
+								},
+								{
+									"key": "openid",
+									"value": "oPFhN1BD3Vi3cufsdRTRrfl2-jxo",
+									"description": "步骤2中 获取到的 openid"
+								},
+								{
+									"key": "lang",
+									"value": "zh_CN"
+								}
+							]
+						},
+						"description": "通过 access_token获取个人信息"
+					},
+					"response": []
+				}
+			],
+			"description": "微信开发者账号申请 \nhttps://learnku.com/courses/laravel-advance-training/5.7/wechat-developer-account-application/2683"
+		},
+		{
+			"name": "图片",
+			"item": [
+				{
+					"name": "上传图片",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sYXJhYmJzX2FwaS50ZXN0XC9hcGlcL2F1dGhvcml6YXRpb25zIiwiaWF0IjoxNTUxMDc2MDQ4LCJleHAiOjE1NTEwNzk2NDgsIm5iZiI6MTU1MTA3NjA0OCwianRpIjoiTVc5eDlsUEo5VWNXbVRIZCIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.Zbnwtua8y4_oUCMhHHrw7Orl3ViQE0m9ddQrZdVStHk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "type",
+									"value": "avatar",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/api/images",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"images"
+							]
+						},
+						"description": "type = {\n\tavatar,\n\ttopics\n}"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "分类",
+			"item": [
+				{
+					"name": "分类列表",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/api/categories",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "话题",
+			"item": [
+				{
+					"name": "发布话题",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sYXJhYmJzX2FwaS50ZXN0XC9hcGlcL2F1dGhvcml6YXRpb25zIiwiaWF0IjoxNTUxMDg0NDYwLCJleHAiOjE1NTEwODgwNjAsIm5iZiI6MTU1MTA4NDQ2MCwianRpIjoiYkVMWkdWUUE3S0dTUDBFWCIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.c80ROlxVSIsqgg1uSMC_bSMSnqFvc6OSQ5udm-pR6xs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "测试 title",
+									"type": "text"
+								},
+								{
+									"key": "body",
+									"value": "测试 body",
+									"type": "text"
+								},
+								{
+									"key": "category_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/api/topics",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"topics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改话题",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sYXJhYmJzX2FwaS50ZXN0XC9hcGlcL2F1dGhvcml6YXRpb25zIiwiaWF0IjoxNTUxMDg4MDY3LCJleHAiOjE1NTEwOTE2NjcsIm5iZiI6MTU1MTA4ODA2NywianRpIjoiSFRCMlhpbTEwb1NvTnJoeiIsInN1YiI6OSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.CdWJHiRzzTekb6K-AXpLyvmb4QZwi2QtryJU7BZXS14",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "修改title",
+									"type": "text"
+								},
+								{
+									"key": "body",
+									"value": "修改body",
+									"type": "text"
+								},
+								{
+									"key": "category_id",
+									"value": "4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/api/topics/:id",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"topics",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "32"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
